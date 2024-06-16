@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Symptom Input</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('back3.jpg'); /* Update with your image path */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            display: flex;
+            justify-content: start; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            padding-left: 250px;
+        }
+        .symptom-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+            max-width: 600px;
+            width: 100%;
+            text-align: center; /* Center align text within container */
+        }
+        .category-button {
+            margin: 8px; /* Margin between category buttons */
+        }
+        .symptom-button {
+            margin: 4px; /* Margin between symptom buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="symptom-container">
+        <h1 class="mb-4">Please Select Your Category:</h1>
+        <div id="category-buttons" class="mb-3">
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Skin')">Skin</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Cold')">Cold</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Eye')">Eye</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Unease')">Unease</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Nose_Mouth_Throat')">Nose & Mouth & Throat</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Swelling')">Swelling</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Exertion')">Exertion</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Urination')">Urination</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Stomach')">Stomach</button>
+            <button type="button" class="btn btn-outline-dark category-button" onclick="showSymptoms('Pain')">Pain</button>
+        </div>
+
+        <div id="symptom-buttons" style="display:none;">
+            <h2 id="symptom-title"></h2>
+            <div class="container">
+                <div class="row g-2 mt-3 mb-3" id="symptoms-list">
+                    <!-- Symptoms will be dynamically added here -->
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit" id="submit-btn" style="display:none;" onclick="submitSymptoms()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const symptoms = {
+            Skin: ['Itching', 'Yellowish_Skin', 'Rashes', 'Red_Spots_Over_Body','toxic_look_(typhos)'],
+            Cold: ['High_fever','chills','mild_fever','continuous_sneezing','Cough','Excessive_mucus'],
+            Eye: ['blurred_and_distoreted','Pain_behind_the_eye','yellowing_of_eyes'],
+            Unease: ['restlessness','lethargy','visual_disturbance','fatigue','depression','irritability','sweating','headache','Nausea','Malaise','Breathlessness','Fast_heart_Rate'],
+            Nose_Mouth_Throat: ['swelled_lymph_nodes','blood_in_sputum','throat_irritation','reusty_sputum','Swollen_Nose','Congestion_in_nose','runny_nose','lose_of_smell'],
+            Swelling: ['stiff_neck','sewlling_joints','enlarged_thyroid','swollen_blood_vessels','puffy_face_and_eyes'],
+            Exertion: ['Diarrhoea','Constipation','Fluid_Overload','pain_during_bowel_movements','Bloody_Stool'],
+            Urination: ['Abonormally','dark_urine','Blood_in_urine','trouble_or_burning_while_passing_urine','continuous_feel_of_urine'],
+            Stomach: ['indigestion','Acidity','Increased_appetite','Vomiting','Irregular_sugur_level','loss_of_appetite','weight_loss','excessive_hunger','obesity'],
+            Pain: ['Abdominal_pain','Muscle_Pain','Chest_Pain','Joint_Pain','back_pain','belly_pain']
+        };
+
+        const selectedSymptoms = [];
+
+        function showSymptoms(category) {
+            document.getElementById('symptom-title').innerText = category.replace(/_/g, " ") + " ";
+            const symptomsList = document.getElementById('symptoms-list');
+            symptomsList.innerHTML = ''; // Clear previous symptoms
+
+            symptoms[category].forEach(symptom => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-6';
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn btn-outline-primary symptom-button';
+                button.innerText = symptom.replace(/_/g, " ");
+                button.onclick = () => toggleSymptom(button, symptom);
+
+                colDiv.appendChild(button);
+                symptomsList.appendChild(colDiv);
+            });
+
+            document.getElementById('symptom-buttons').style.display = 'block';
+        }
+
+        function toggleSymptom(button, symptom) {
+            const index = selectedSymptoms.indexOf(symptom);
+            if (index > -1) {
+                selectedSymptoms.splice(index, 1);
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-outline-primary');
+            } else {
+                selectedSymptoms.push(symptom);
+                button.classList.remove('btn-outline-primary');
+                button.classList.add('btn-primary');
+            }
+            document.getElementById('submit-btn').style.display = selectedSymptoms.length > 0 ? 'block' : 'none';
+        }
+
+        function submitSymptoms() {
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ symptoms: selectedSymptoms })
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                alert(responseText);
+                selectedSymptoms.length = 0;
+                document.getElementById('submit-btn').style.display = 'none';
+                document.getElementById('symptom-buttons').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting your data.');
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

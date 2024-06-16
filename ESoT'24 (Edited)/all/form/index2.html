@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Square of Numbers</title>
+</head>
+<body>
+    <h1>Enter numbers one by one. Enter 0 to stop:</h1>
+    <input type="text" id="numberInput" />
+    <button id="addButton">Add Number</button>
+    <button id="calculateButton" style="display:none;">Calculate Squares</button>
+    <p id="result"></p>
+
+    <script>
+        let numbers = [];
+
+        function addNumber() {
+            const input = document.getElementById('numberInput').value;
+            const number = parseFloat(input.trim());
+
+            if (number === 0) {
+                document.getElementById('addButton').style.display = 'none';
+                document.getElementById('calculateButton').style.display = 'inline';
+            } else if (!isNaN(number)) {
+                numbers.push(number);
+                document.getElementById('numberInput').value = '';
+            }
+        }
+
+        function calculateSquares() {
+            const squaredNumbers = numbers.map(num => num ** 2);
+            document.getElementById('result').innerText = 'Squared Numbers: ' + squaredNumbers.join(', ');
+        }
+
+        document.getElementById('addButton').addEventListener('click', addNumber);
+        document.getElementById('calculateButton').addEventListener('click', calculateSquares);
+    </script>
+</body>
+</html>

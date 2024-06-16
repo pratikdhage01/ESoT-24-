@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page MedAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="revisedlp.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script defer src="revisedlp.js"></script>
+</head>
+<body>
+  <nav id="navbar" class="">
+    <div class="nav-wrapper">
+      <!-- Navbar Logo -->
+      <div class="logo">
+        <!-- Logo Placeholder for Inlustration -->
+        <a href="#home" class="medai-link">
+            <i class="fa-solid fa-hand-holding-medical fa-fade" style="color: #0fd748;"></i>
+            <span class="medai-text">MedAI</span>
+        </a>
+      </div>
+  
+      <!-- Navbar Links -->
+      <ul id="menu">
+        <li><a href="#hero">Home</a></li><!--
+     --><li><a href="#hero1">Services</a></li><!--
+     --><li><a href="#home">About</a></li><!--
+     --><li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <section id="hero">
+    <h1>Welcome to MedAI</h1>
+    <p>AI based solutions for early disease detection</p>
+    <!-- <a href="#signup" class="button">Get Started Today</a> -->
+  </section>
+
+  <!-- Menu Icon -->
+  <div class="menuIcon">
+    <span class="icon icon-bars"></span>
+    <span class="icon icon-bars overlay"></span>
+  </div>
+  
+  <div class="overlay-menu">
+    <ul id="menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#card-container">Services</a></li>
+        <li><a href="#home">About</a></li>
+        <li><a href="#z">Contact</a></li>
+      </ul>
+  </div>
+  
+  <section class="home">
+    <div class="description">
+      <h1 class="title">
+        <span class="gradient-text">Empowering Health</span> with Early Detection
+      </h1>
+      <p class="paragraph">
+        At HealthWatch, we leverage cutting-edge technology and advanced medical data analysis 
+        to identify diseases in their early stages. Our mission is to provide accurate, 
+        timely insights that empower individuals and healthcare professionals to take proactive steps in managing health.
+      </p>
+      <form id="form" action="http://localhost:3000" autocomplete="off">
+        <button type="submit" class="btn" aria-label="submit">
+          <span>Try Baymax 1.0</span>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+      </form>
+    </div>
+
+    <div class="users-color-container">
+      <span class="item" style="--i: 1"></span>
+      <img
+        class="item"
+        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/274f29ce-0d3f-4ac2-a2aa-f9b7bd188b2a"
+        style="--i: 2"
+        alt="" />
+      <span class="item" style="--i: 3"></span>
+      <img
+        class="item"
+        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b8a14493-3d9f-4b9b-b93a-56d0bc7243e9"
+        style="--i: 4"
+        alt="" />
+      <img
+        class="item"
+        src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/03e51e1e-9750-45a5-b75e-a1e341d4562a"
+        style="--i: 10"
+        alt="" />
+      <span class="item" style="--i: 11"></span>
+      <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/5eb50f89-3e5a-480e-860c-8d40d3ba9ffe" style="--i: 12" alt="" />
+      <span class="item" style="--i: 5"></span>
+      <span class="item" style="--i: 9"></span>
+      <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/86c71a79-2efe-4567-8665-b1e5a1fd9735" style="--i: 8" alt="" />
+      <span class="item" style="--i: 7"></span>
+      <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/97ef9643-5202-41aa-80f0-ceeabccdd099" style="--i: 6" alt="" />
+    </div>
+  </section>
+  
+  <section id="z">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/DXsexlI15E0?start=65&end=88&autoplay=1&loop=1&mute=1&playlist=DXsexlI15E0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <h1>Now a reality</h1>
+  </section>
+   
+  <section id="hero1">
+    <div class="popup-body about-container">
+      <div class="img-frame">
+        <img
+          src="https://c4.wallpaperflare.com/wallpaper/848/11/754/baymax-baymax-big-hero-6-minimalism-wallpaper-preview.jpg"
+          alt="baymax" />
+      </div>
+      <div class="hero-content">
+        <h1>Introducing<br> Baymax 1.0</h1>
+        <p>
+          Baymax is an advanced machine learning model designed to revolutionize healthcare. With its ability to analyze over 130 different symptoms, Baymax assists in the early detection of 
+          more than 40 diseases. Whether it’s identifying subtle signs or predicting potential health issues, Baymax is your reliable partner in maintaining well-being. Its precision and efficiency make
+           it an indispensable tool for medical professionals and patients alike.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
